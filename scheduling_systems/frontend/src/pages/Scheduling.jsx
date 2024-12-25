@@ -4,6 +4,7 @@ import {
   getEmployeesData,
   getAdminEmail,
   getScheduleSentState,
+  getLoadingState,
   toggleScheduleSent,
 } from "../reducer/employeesSlice";
 import { useNavigate } from "react-router-dom";
@@ -19,9 +20,11 @@ const Scheduling = () => {
   const employeesData = useSelector(getEmployeesData);
   const adminEmail = useSelector(getAdminEmail);
   const isScheduleSent = useSelector(getScheduleSentState);
+  const isLoading = useSelector(getLoadingState);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const notify = () => toast.success("All meeting notifications sent successfully!");
+  const notify = () =>
+    toast.success("All meeting notifications sent successfully!");
 
   const handleEmployeeChange = (employee) => {
     setSelectedEmployees((prevSelected) => {
@@ -151,9 +154,14 @@ const Scheduling = () => {
         </div>
         <button
           type="submit"
-          className="w-full px-4 py-2 font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300"
+          className={`w-full px-4 py-2 font-semibold text-white rounded-md focus:outline-none focus:ring focus:ring-blue-300 ${
+            isLoading
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-blue-600 hover:bg-blue-700"
+          }`}
+          disabled={isLoading}
         >
-          Submit Schedule
+          {isLoading ? "Loading..." : "Submit Schedule"}
         </button>
       </form>
       <ToastContainer />

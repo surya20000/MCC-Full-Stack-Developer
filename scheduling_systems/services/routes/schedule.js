@@ -50,8 +50,6 @@ cron.schedule("* * * * *", async () => {
       [now, new Date(now.getTime() + 60 * 60 * 1000)]
     );
 
-    console.log(rows);
-
     for (const row of rows) {
     
       const indiaTime = new Intl.DateTimeFormat('en-GB', {
