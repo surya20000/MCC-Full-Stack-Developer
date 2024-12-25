@@ -4,7 +4,7 @@ based on the time interval i.e. 1-hour before 30-minuted before and 15-minutes b
 also sent to the admin confirming all the mails was sent successfully!!
 the technology that I used to implement this working is
 
-- *Mysql:-* For storing the data in the database in forms of table.
+- *Mysql:-* For storing the data and schedules in the database .
 - *Node.js:-* For the api building and the backend tasks.
 - *Express.js:-*  For the initializing the server for the backend.
 - *S.M.T.P:-* For sending mails to the employees.
